@@ -1,0 +1,43 @@
+<h1>{{ title }}</h1>
+
+<div class="main">
+  <h3>Student List</h3>
+  @if (error) {
+    <div class="error">
+      <p>Error: {{ error }}</p>
+    </div>
+  }
+
+
+  <form class="form" [formGroup]="studentForm" (ngSubmit)="addStudent()">
+    <input class="input" type="text" name="firstname" placeholder="Enter First Name" formControlName="firstname"/>
+    <br />
+    <input class="input" type="text" name="lastname" placeholder="Enter Last Name" formControlName="lastname"/>
+    <br />
+    <input class="input" type="email" name="email"  placeholder="Enter Email"  formControlName="email"/>
+    <br />
+    <button class="submit-button" [disabled]="studentForm.invalid">Save</button>
+  </form>
+
+  @if (students) {
+    <div class="todo-container">
+      <ul>
+        @for (student of students; track $index) {
+        <li>
+          <button class="select-btn" (click)="getStudentById(student._id)">Select</button>
+          <div class="todo">
+            <span class="todo-name">{{ student.firstname }}</span>
+            <span class="todo-name">{{ student.lastname }}</span>
+            <span class="todo-description">{{ student.email }}</span>
+          </div>
+          <button class="update-btn" (click)="updateStudent(student._id)">Update</button>
+          <button class="delete-btn" (click)="deleteStudent(student._id)">Delete</button>
+          <a class="select-btn" routerLink="/studentdetails/{{student._id}}">View</a>
+        </li>
+      }
+      </ul>
+    </div>
+  }
+  </div>
+
+  <router-outlet/>

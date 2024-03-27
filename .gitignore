@@ -1,0 +1,5 @@
+backend_graphql/node_modules
+frontend_angular_graphql/node_modules
+frontend_angular_graphql/.angular
+frontend_angular_graphql/dist
+frontend_angular_graphql/.vscode
