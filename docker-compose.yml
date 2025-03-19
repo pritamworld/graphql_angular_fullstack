@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend_graphql  # Path to the backend directory
+    container_name: backend
+    ports:
+      - "4000:4000"  # Exposing backend on port 3000
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend_angular_graphql  # Path to the frontend directory
+    container_name: frontend
+    ports:
+      - "80:80"  # Exposing frontend on port 80
+    networks:
+      - app-network
+    depends_on:
+      - backend  # Ensure the backend is up before the frontend starts
+
+networks:
+  app-network:
+    driver: bridge
