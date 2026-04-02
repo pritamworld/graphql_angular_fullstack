@@ -52,6 +52,7 @@ export class StudentList implements OnInit {
   loadStudents() {
     this.studentService.getStudents().subscribe({
       next: (data) => {
+        console.log('Students:', data);
         this.students = data;
       },
       error: (err) => {

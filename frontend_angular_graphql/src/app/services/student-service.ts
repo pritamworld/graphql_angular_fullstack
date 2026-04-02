@@ -37,8 +37,8 @@ export class StudentService {
     return this.apollo
       .query<any>({ query: GET_HELLO })
       .pipe(
-        map((res) => res.data.hello),
-        catchError(this.handleError)
+        map((res) => res?.data?.hello),
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -49,9 +49,9 @@ export class StudentService {
       .valueChanges.pipe(
         map((res) => {
           console.log('Fetched Students:', res);
-          return res.data.students;
+          return res?.data?.students || [];
         }),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -63,8 +63,11 @@ export class StudentService {
         variables: { studentId: id },
       })
       .pipe(
-        map((res) => res.data.student),
-        catchError(this.handleError)
+        map((res) => {
+          //console.log('Fetched Student:', res.data.student);
+          return res.data.student;
+        }),
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -82,7 +85,7 @@ export class StudentService {
       })
       .pipe(
         map((res: any) => res.data.addStudent),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -101,7 +104,7 @@ export class StudentService {
       })
       .pipe(
         map((res: any) => res.data.updateStudent),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 
@@ -115,7 +118,7 @@ export class StudentService {
       })
       .pipe(
         map((res: any) => res.data.deleteStudent),
-        catchError(this.handleError)
+        catchError((error) => this.handleError(error))
       );
   }
 }

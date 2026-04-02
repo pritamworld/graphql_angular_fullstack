@@ -20,7 +20,7 @@ export class StudentDetails implements OnInit {
     const id = this.route.snapshot.paramMap.get('studentId');
 
     console.log('Student ID from route:', id);
-    
+
     if (id) {
       this.loadStudent(id);
     } else {
@@ -33,7 +33,7 @@ export class StudentDetails implements OnInit {
 
     this.studentService.getStudentById(id).subscribe({
       next: (data) => {
-        console.log('Student Details:', data);
+        //console.log('Student Details:', data);
         this.student = data;
         this.loading = false;
       },

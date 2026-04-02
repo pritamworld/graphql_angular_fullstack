@@ -10,9 +10,9 @@ const app = express();
 
 //TODO - Replace you Connection String here
 const DB_USER = 'sa';
-const DB_USER_PASSWORD = 'UPDATE_YOUR_PASSWORD';
+const DB_USER_PASSWORD = 'SpuQq1WX5MPzGDru';
 const DB_CLUSTER = 'cluster0.7wn4nmp.mongodb.net';
-const DB_NAME = 'w2024_comp3133s';
+const DB_NAME = 'w26_comp3133_db';
 const mongodb_atlas_url = `mongodb+srv://${DB_USER}:${DB_USER_PASSWORD}@${DB_CLUSTER}/${DB_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(mongodb_atlas_url, {
     useNewUrlParser: true,
