@@ -1,1 +1,48 @@
-<p>student-details works!</p>
+<div class="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-2xl mt-6">
+
+  <h2 class="text-2xl font-bold text-blue-600 mb-4">
+    Student Details
+  </h2>
+
+  <!-- Loading -->
+  @if (loading) {
+    <p class="text-blue-500">Loading student details...</p>
+  }
+
+  <!-- Error -->
+  @if (error) {
+  <div class="bg-red-100 text-red-600 p-3 rounded mb-4">
+    {{ error }}
+  </div>
+  }
+
+  <!-- Student Data -->
+  @if (student && !loading) {
+  <div class="space-y-3">
+
+    <div>
+      <p class="text-gray-500 text-sm">First Name</p>
+      <p class="text-lg font-semibold">{{ student.firstname }}</p>
+    </div>
+
+    <div>
+      <p class="text-gray-500 text-sm">Last Name</p>
+      <p class="text-lg font-semibold">{{ student.lastname }}</p>
+    </div>
+
+    <div>
+      <p class="text-gray-500 text-sm">Email</p>
+      <p class="text-lg font-semibold">{{ student.email }}</p>
+    </div>
+
+  </div>
+
+  <!-- Back Button -->
+  <div class="mt-6">
+    <button routerLink="/" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+      Back
+    </button>
+  </div>
+  }
+
+</div>
